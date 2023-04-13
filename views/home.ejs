@@ -1,0 +1,28 @@
+<%- include("partails/header") -%>
+    <h1 style="color: blueviolet;">Home</h1>
+    <p>
+        <%= homeContent %>
+    </p>
+
+    <!-- here we use the value of publishdata that we create in app.js in home route -->
+    <!-- then use for each or any loop to loop through the home page -->
+    <%publishData.forEach((obj)=>{%>
+        <h2 style="color: blueviolet;">
+            <%=obj.Name%>
+        </h2>
+        <p>
+            <!-- here we   restrict the lent only to 100 char and then add a red more anchor tag -->
+            <%=obj.Body.substring(0,125) + "..." %>
+            <!-- here we using /post/<%= obj.Name %> means when user click on read more it will redirect to particular title page -->
+            <a class="text-primary" href="/post/<%= obj.Name %>">Read more</a>
+        </p>
+        <%})%>
+            <form action="/" method="post">
+                     
+                
+                <button class="btn btns btn-info btn-lg">
+                    Create a New Journal
+                </button>
+            </form>
+
+           <%-include("partails/footer")-%>
